@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import ListContent from './ListContent';
 
 class WishList extends Component {
   constructor(props) {
@@ -34,7 +35,22 @@ class WishList extends Component {
       <button type='button' style={{ backgroundColor: 'red', color: 'white' }} onClick={this.addWish}>新增2020wish清单</button>
       <ul>
         {this.state.list.map((item, index) => {
-          return <li key={item + index} onClick={() => {this.deleteItem(index)}}>{item}</li>
+          return (
+            // <li
+            //   key={item + index}
+            //   onClick={() => {this.deleteItem(index)}}
+            // >
+            //   {item}
+            // </li>
+           
+            <ListContent
+              key={item+index}
+              content={item}
+              index={index}
+              // list={this.state.list}
+              deleteItem={this.deleteItem}
+            />
+          )
         })}
       </ul>
     </React.Fragment> );

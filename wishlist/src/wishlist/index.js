@@ -9,9 +9,9 @@ class WishList extends Component {
       list: [],
     }
   }
-  writeWish = (e) => {
+  writeWish = () => {
     this.setState({
-      value: e.target.value
+      value: this.input.value
     })
   }
 
@@ -20,6 +20,7 @@ class WishList extends Component {
       list: [...this.state.list, this.state.value],
       value: ''
     })
+    // console.log(this.ul.querySelectorAll('li').length) 因setState是异步，所以获取的length值总是少1。解决办法就是在回调函数中取
   }
 
   deleteItem = (index) => {
@@ -31,9 +32,14 @@ class WishList extends Component {
   }
   render() { 
     return ( <React.Fragment>
-      <input type='text' value={this.state.value} onChange={this.writeWish}></input>
+      <input
+        type='text'
+        value={this.state.value}
+        onChange={this.writeWish}
+        ref={a => this.input=a}
+      />
       <button type='button' style={{ backgroundColor: 'red', color: 'white' }} onClick={this.addWish}>新增2020wish清单</button>
-      <ul>
+      <ul ref={ul => this.ul = ul}>
         {this.state.list.map((item, index) => {
           return (
             // <li

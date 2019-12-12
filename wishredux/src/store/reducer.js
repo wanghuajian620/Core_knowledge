@@ -9,8 +9,13 @@ const initialState = {
   ]
 };
 
-function borrowBook(state = initialState, action) {
+export default (state = initialState, action) => {
+  if(action.type === 'InputValue') {
+    let newState = JSON.parse(JSON.stringify(state));
+    newState.inputValue = action.value;
+    // let newState = {...state,inputValue:}
+    // console.log(state, action)
+    return newState;  
+  }
   return state;
 }
-
-export default borrowBook;

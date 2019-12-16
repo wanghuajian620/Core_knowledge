@@ -10,6 +10,8 @@ class BorrowBook extends Component {
     this.state = store.getState();
     this.changeInputValue = this.changeInputValue.bind(this);
     this.storeChange = this.storeChange.bind(this);
+    this.clickBtn = this.clickBtn.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
     store.subscribe(this.storeChange);
   }
 
@@ -24,12 +26,26 @@ class BorrowBook extends Component {
   storeChange() {
     this.setState(store.getState())
   }
+  
+  clickBtn() {
+    const action = {
+      type: 'addItem',
+    }
+    store.dispatch(action);
+  }
 
+  deleteItem(index) {
+    const action = {
+      type: 'deleteItem',
+      index
+    }
+    store.dispatch(action);
+  }
   render() { 
     return ( 
       <div style={{ margin: '10px' }}>
         <div>
-          我要去图书馆借书，发现一个冷知识《死生契阔，与子成说。执子携手，与子偕老》是形容战友情的。
+          冷知识：《死生契阔，与子成说。执子之手，与子偕老》是形容战友情的。
         </div>
         <div>
           <Input
@@ -38,14 +54,14 @@ class BorrowBook extends Component {
             style={{ width: '250px', marginRight: '10px' }}
             onChange={this.changeInputValue}
           />
-          <Button type='primary'>添加</Button>
+          <Button type='primary' style={{ backgroundColor: 'red'}} onClick={this.clickBtn}>添加</Button>
         </div>
         <div>
           <List
             size="large"
             bordered
             dataSource={this.state.list}
-            renderItem={item => <List.Item>{item}</List.Item>}
+            renderItem={(item, index) => <List.Item onClick={() => {this.deleteItem(index)}}>{item}</List.Item>}
             style={{ width: '350px', marginTop: '20px'}}
           />
         </div>

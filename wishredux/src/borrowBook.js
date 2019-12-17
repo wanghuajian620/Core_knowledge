@@ -4,10 +4,10 @@
  */
 
 import React, { Component } from 'react';
-import 'antd/dist/antd.css';
-import { Input, Button, List } from 'antd';
+
 import store from './store';
 import { changeInputAction, addItemAction, deleteItemAction } from './store/actionCreate';
+import BorrowBookUi from './borrowBookUi';
 
 class BorrowBook extends Component {
   constructor(props) {
@@ -40,29 +40,13 @@ class BorrowBook extends Component {
   }
   render() { 
     return ( 
-      <div style={{ margin: '10px' }}>
-        <div>
-          冷知识：《死生契阔，与子成说。执子之手，与子偕老》是形容战友情的。
-        </div>
-        <div>
-          <Input
-            placeholder={this.state.inputValue}
-            value={this.state.inputValue}
-            style={{ width: '250px', marginRight: '10px' }}
-            onChange={this.changeInputValue}
-          />
-          <Button type='primary' style={{ backgroundColor: 'red'}} onClick={this.clickBtn}>添加</Button>
-        </div>
-        <div>
-          <List
-            size="large"
-            bordered
-            dataSource={this.state.list}
-            renderItem={(item, index) => <List.Item onClick={() => {this.deleteItem(index)}}>{item}</List.Item>}
-            style={{ width: '350px', marginTop: '20px'}}
-          />
-        </div>
-      </div>
+      <BorrowBookUi
+        inputValue={this.state.inputValue}
+        changeInputValue={this.changeInputValue}
+        clickBtn={this.clickBtn}
+        list={this.state.list}
+        deleteItem={this.deleteItem}
+      />
     );
   }
 }

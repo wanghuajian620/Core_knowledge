@@ -17,6 +17,7 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+  // Reducer中只能接受state，不能修改state
   if(action.type === INPUT_VALUE) {
     let newState = JSON.parse(JSON.stringify(state));
     newState.inputValue = action.value;

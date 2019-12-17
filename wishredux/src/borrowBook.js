@@ -1,8 +1,13 @@
+/**
+ *     Revision   History:
+ *        Initial:  2019/12/16         Author:  Wang Huajian
+ */
+
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Input, Button, List } from 'antd';
 import store from './store';
-
+import { changeInputAction, addItemAction, deleteItemAction } from './store/actionCreate';
 
 class BorrowBook extends Component {
   constructor(props) {
@@ -16,10 +21,7 @@ class BorrowBook extends Component {
   }
 
   changeInputValue(e) {
-    const action = {
-      type: 'InputValue',
-      value: e.target.value
-    }
+    const action = changeInputAction(e.target.value);
     store.dispatch(action);
   }
 
@@ -28,17 +30,12 @@ class BorrowBook extends Component {
   }
   
   clickBtn() {
-    const action = {
-      type: 'addItem',
-    }
+    const action = addItemAction();
     store.dispatch(action);
   }
 
   deleteItem(index) {
-    const action = {
-      type: 'deleteItem',
-      index
-    }
+    const action = deleteItemAction(index);
     store.dispatch(action);
   }
   render() { 

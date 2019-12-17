@@ -1,3 +1,8 @@
+/**
+ *     Revision   History:
+ *        Initial:  2019/12/13         Author:  Wang Huajian
+ */
+
 import { createStore } from 'redux';
 import reducer from './reducer';
 

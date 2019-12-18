@@ -11,7 +11,19 @@ class ListContent extends Component {
     // this.props.list = [];
     this.props.deleteItem(this.props.index);
   }
-  render() { 
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps.content !== this.props.content) {
+      return true
+    }else{
+      return false
+    }
+  }
+
+  componentWillReceiveProps() {
+    console.log('componentWillReceiveProps')
+  }
+  render() {
+    // console.log('reder----挂载中') 
     return ( 
     <li onClick={this.handleClick}>Hello{this.props.name}，你的本月清单：{this.props.content}</li>
     );

@@ -30,6 +30,7 @@ class WishList extends Component {
       list: list
     })
   }
+
   render() { 
     return ( <React.Fragment>
       <input

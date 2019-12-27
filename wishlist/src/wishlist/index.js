@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import ListContent from './ListContent';
 
 class WishList extends Component {
@@ -29,6 +30,14 @@ class WishList extends Component {
     this.setState({
       list: list
     })
+  }
+  
+  componentDidMount() {
+    axios.post('https://web-api.juejin.im/v3/web/wbbr/bgeda')
+      .then((res) => {console.log('axios 获取数据成功:' + JSON.stringify(res))})
+      .catch((error) => {
+        console.log('axios 获取数据失败:' + error)
+      })
   }
 
   render() { 

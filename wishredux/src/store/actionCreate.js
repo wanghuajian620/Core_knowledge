@@ -3,7 +3,7 @@
  *        Initial:  2019/12/17         Author:  Wang Huajian
  */
 
-import { INPUT_VALUE, ADD_ITEM, DELETE_ITEM} from './actionType';
+import { INPUT_VALUE, ADD_ITEM, DELETE_ITEM, GET_LIST} from './actionType';
 
 // 改变输入框的值
 export const changeInputAction = (value) => ({
@@ -20,4 +20,10 @@ export const addItemAction = () => ({
 export const deleteItemAction = (index) => ({
   type: DELETE_ITEM,
   index
+})
+
+// 获取list数据
+export const getListAction = (data) => ({
+  type: GET_LIST,
+  data
 })

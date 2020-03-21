@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 
 import store from './store';
-import { changeInputAction, addItemAction, deleteItemAction } from './store/actionCreate';
+import { changeInputAction, addItemAction, deleteItemAction, getListAction } from './store/actionCreate';
 import BorrowBookUi from './borrowBookUi';
 
 class BorrowBook extends Component {
@@ -37,6 +37,14 @@ class BorrowBook extends Component {
   deleteItem(index) {
     const action = deleteItemAction(index);
     store.dispatch(action);
+  }
+  componentDidMount() {
+    axios.get('https://www.bing.com')
+    .then((res) => {
+      const data = res.data
+      const action = getListAction(data)
+      store.dispatch(action)
+    })
   }
   render() { 
     return ( 

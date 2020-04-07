@@ -92,6 +92,7 @@ const HOC =(WrapperComponent) => {
       label: 'gaojiezujian'
     }
     render() {
+      console.log("this.props:", this.props);
       return (
         <div>
           <label>{this.props.label}</label>
@@ -105,7 +106,7 @@ const HOC =(WrapperComponent) => {
 class NormalComponent extends Component {
   render() {
     return (
-      <input type="text"/>
+      <input type="text" />
     );
   }
 }

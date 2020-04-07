@@ -1,5 +1,7 @@
+/**
+ * 主要内容：react 新旧版本的 ref 使用
+ */
 import React from 'react';
-
 
 // ref 为字符串的用法（已被弃用）
 // export default class Main extends React.Component {

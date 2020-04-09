@@ -1,5 +1,7 @@
 /**
  * 主要内容： 组件实例
+ * 有状态组件使用class声明，内部有state状态，在生命周期中可以改变state。
+ * 无状态组件不会产生组件实例，主要用于展示，复用性较高
  */
 import React, { Component } from 'react'
 
